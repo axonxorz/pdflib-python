@@ -1,7 +1,16 @@
 from functools import wraps
 import inspect
 
-from pdflib_py import *
+try:
+    from i386.pdflib_py import *
+except ImportError:
+    pass
+
+try:
+    from x86_64.pdflib_py import *
+except ImportError:
+    print 'Could not import i386 or x86_64 PDFlib extensions'
+    raise
 
 def wrap_optlist(fn):
     """Wraps functions that accept an optlist. If the incoming
