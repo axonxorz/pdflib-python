@@ -62,9 +62,10 @@ class PDFlib(object):
             v = cls._coerce_list(v)
         elif isinstance(v, (float, int)): # This is probably naive
             v = str(v)
+        elif isinstance(v, basestring):
+            pass
         else:
             raise TypeError('_coerce_value cant convert type %s' % type(v))
-
         return v
 
     @classmethod
@@ -77,7 +78,7 @@ class PDFlib(object):
     @classmethod
     def _coerce_bool(cls, b):
         return str(b).lower()
-    
+
     def boxdebug(self, optlist):
         if self._debug:
             if 'boxsize' in optlist:
