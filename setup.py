@@ -10,7 +10,7 @@ CHANGES = ''
 requires = []
 
 setup(name='PDFlib',
-      version='1.0-pdflib9',
+      version='1.0-pdflib9.3',
       description='Modified OO wrapper around PDFlib',
       long_description=README + '\n\n' +  CHANGES,
       classifiers=[],
