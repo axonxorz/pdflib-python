@@ -56,7 +56,7 @@ class PDFlib(object):
             v = cls._coerce_list(v)
         elif isinstance(v, (float, int)): # This is probably naive
             v = str(v)
-        elif isinstance(v, basestring):
+        elif isinstance(v, str):
             pass
         else:
             raise TypeError('_coerce_value cant convert type %s' % type(v))
