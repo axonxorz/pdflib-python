@@ -1,7 +1,10 @@
 import inspect
 from functools import wraps
 
-from .pdflib_py import *
+try:
+    from .pdfldib_py import *
+except ImportError as exc:
+    raise ImportError('Could not load pdflib_py shared library') from exc
 
 
 def wrap_optlist(fn):
