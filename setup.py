@@ -1,27 +1,12 @@
-import os
-import sys
+from setuptools import setup
+from setuptools.dist import Distribution
 
-from setuptools import setup, find_packages
 
-here = os.path.abspath(os.path.dirname(__file__))
-README = ''
-CHANGES = ''
+class BinaryDistribution(Distribution):
+    """Distribution which always forces a binary package with platform name.
+    Used due to our precompiled extension"""
+    def has_ext_modules(self):
+        return True
 
-requires = []
 
-setup(name='PDFlib',
-      version='1.0.1+pdflib9.3',
-      description='Modified OO wrapper around PDFlib',
-      long_description=README + '\n\n' +  CHANGES,
-      classifiers=[],
-      author='',
-      author_email='',
-      url='',
-      keywords='',
-      packages=find_packages(),
-      include_package_data=True,
-      zip_safe=False,
-      install_requires = requires,
-      entry_points = ''
-      )
-
+setup(distclass=BinaryDistribution)

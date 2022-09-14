@@ -1,0 +1,16 @@
+[project]
+name = "PDFlib"
+description = "Modified OO wrapper around PDFlib"
+version = "1.0.2+pdflib9.3"
+keywords = ["pdf"]
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python",
+]
+
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["PDFlib"]
