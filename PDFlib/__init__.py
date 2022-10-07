@@ -10,8 +10,9 @@ except ImportError as exc:
 def wrap_optlist(fn):
     """Wraps functions that accept an optlist. If the incoming
     optlist is a dict, parse it down to native format"""
-    argspec = inspect.getargspec(fn)
+    argspec = inspect.getfullargspec(fn)
     idx = argspec.args.index('optlist')
+
     @wraps(fn)
     def new_fn(*args, **kwargs):
         try:
@@ -22,6 +23,7 @@ def wrap_optlist(fn):
             # No optlist to speak of
             pass
         return fn(*args, **kwargs)
+
     return new_fn
 
 
@@ -34,7 +36,6 @@ class PDFlib:
     _font_size = 0
 
     def __init__(self):
-        self.__p = None
         self.__p = PDF_new()
         if self.__p:
             PDF_set_option(self.__p, "objorient=true")
@@ -59,8 +60,6 @@ class PDFlib:
             v = cls._coerce_list(v)
         elif isinstance(v, (float, int)): # This is probably naive
             v = str(v)
-        elif isinstance(v, str):
-            pass
         else:
             raise TypeError('_coerce_value cant convert type %s' % type(v))
         return v
@@ -82,18 +81,15 @@ class PDFlib:
                 optlist += ' showborder=true'
         return optlist
 
-    # it is recommended not to use __del__ as it is not guaranteed
-    # when this will be executed (see Python Esential Reference Page 94).
-    # so we also implement a delete method and invalidate self.__p
-    # whenever this will be called.
+    # It is recommended not to use __del__ as it's execution is not guaranteed in a timely fashion.
+    # Implement a delete method to invalidate self.__p
     def __del__(self):
-        if (self.__p):
-            PDF_delete(self.__p)
+        self.delete()
 
     def delete(self):
-        if (self.__p):
+        if self.__p:
             PDF_delete(self.__p)
-        self.__p = 0
+        self.__p = None
 
     @wrap_optlist
     def add_nameddest(self, name, optlist=''):
