@@ -1,7 +1,7 @@
 [project]
 name = "PDFlib"
 description = "Modified OO wrapper around PDFlib"
-version = "1.1.0+pdflib9.3"
+version = "1.1.1+pdflib9.3"
 keywords = ["pdf"]
 requires-python = ">=3.8"
 classifiers = [
