@@ -91,9 +91,11 @@ class PDFlib:
     def _coerce_bool(cls, b: bool):
         return str(b).lower()
 
-    def boxdebug(self, optlist):
+    def box_debug(self, optlist: str) -> str:
+        """Wrapper for any optlist. If debug mode is enabled, showborder=true will be injected
+        into the optlist if it's not already specified. Called by various position-fitting methods."""
         if self._debug:
-            if 'boxsize' in optlist:
+            if 'showborder=' not in optlist:
                 optlist += ' showborder=true'
         return optlist
 
@@ -137,6 +139,7 @@ class PDFlib:
         text: str,
         optlist: Optlist = ''
     ) -> Handle:
+        optlist = self.box_debug(optlist)
         return PDF_add_table_cell(self.__p, table, column, row, text, optlist)
 
     @wrap_optlist
@@ -313,6 +316,7 @@ class PDFlib:
 
     @wrap_optlist
     def draw_path(self, path: Handle, x: float, y: float, optlist: Optlist = ''):
+        optlist = self.box_debug(optlist)
         PDF_draw_path(self.__p, path, x, y, optlist)
 
     def ellipse(self, x: float, y: float, rx: float, ry: float):
@@ -360,14 +364,17 @@ class PDFlib:
 
     @wrap_optlist
     def fit_graphics(self, graphics: Handle, x: float, y: float, optlist: Optlist = ''):
+        optlist = self.box_debug(optlist)
         PDF_fit_graphics(self.__p, graphics, x, y, optlist)
 
     @wrap_optlist
     def fit_image(self, image: Handle, x: float, y: float, optlist: Optlist = ''):
+        optlist = self.box_debug(optlist)
         PDF_fit_image(self.__p, image, x, y, optlist)
 
     @wrap_optlist
     def fit_pdi_page(self, page: Handle, x: float, y: float, optlist: Optlist = ''):
+        optlist = self.box_debug(optlist)
         PDF_fit_pdi_page(self.__p, page, x, y, optlist)
 
     @wrap_optlist
@@ -380,6 +387,7 @@ class PDFlib:
         ury: float,
         optlist: Optlist = ''
     ) -> str:
+        optlist = self.box_debug(optlist)
         return PDF_fit_table(self.__p, table, llx, lly, urx, ury, optlist)
 
     @wrap_optlist
@@ -392,11 +400,12 @@ class PDFlib:
         ury: float,
         optlist: Optlist = ''
     ) -> str:
+        optlist = self.box_debug(optlist)
         return PDF_fit_textflow(self.__p, textflow, llx, lly, urx, ury, optlist)
 
     @wrap_optlist
     def fit_textline(self, text: str, x: float, y: float, optlist: Optlist = ''):
-        optlist = self.boxdebug(optlist)
+        optlist = self.box_debug(optlist)
         PDF_fit_textline(self.__p, text, x, y, optlist)
 
     def get_apiname(self) -> str:
