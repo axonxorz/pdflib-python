@@ -95,33 +95,13 @@ class PDFlib:
             PDF_delete(self.__p)
         self.__p = 0
 
-    def activate_item(self, id):
-        PDF_activate_item(self.__p, id)
-
-    def add_bookmark(self, text, parent, open):
-        return PDF_add_bookmark(self.__p, text, parent, open)
-
-    def add_launchlink(self, llx, lly, urx, ury, filename):
-        PDF_add_launchlink(self.__p, llx, lly, urx, ury, filename)
-
-    @wrap_optlist
-    def add_locallink(self, llx, lly, urx, ury, page, optlist=''):
-        PDF_add_locallink(self.__p, llx, lly, urx, ury, page, optlist)
-
     @wrap_optlist
     def add_nameddest(self, name, optlist=''):
         PDF_add_nameddest(self.__p, name, optlist)
 
-    def add_note(self, llx, lly, urx, ury, contents, title, icon, open):
-        PDF_add_note(self.__p, llx, lly, urx, ury, contents, title, icon, open)
-
     @wrap_optlist
     def add_path_point(self, path, x, y, type, optlist=''):
         return PDF_add_path_point(self.__p, path, x, y, type, optlist)
-
-    @wrap_optlist
-    def add_pdflink(self, llx, lly, urx, ury, filename, page, optlist=''):
-        PDF_add_pdflink(self.__p, llx, lly, urx, ury, filename, page, optlist)
 
     @wrap_optlist
     def add_portfolio_file(self, folder, filename, optlist=''):
@@ -139,12 +119,6 @@ class PDFlib:
     def add_textflow(self, textflow, text, optlist=''):
         return PDF_add_textflow(self.__p, textflow, text, optlist)
 
-    def add_thumbnail(self, image):
-        PDF_add_thumbnail(self.__p, image)
-
-    def add_weblink(self, llx, lly, urx, ury, url):
-        PDF_add_weblink(self.__p, llx, lly, urx, ury, url)
-
     def align(self, dx, dy):
         PDF_align(self.__p, dx, dy)
 
@@ -154,9 +128,6 @@ class PDFlib:
     def arcn(self, x, y, r, alpha, beta):
         PDF_arcn(self.__p, x, y, r, alpha, beta)
 
-    def attach_file(self, llx, lly, urx, ury, filename, description, author, mimetype, icon):
-        PDF_attach_file(self.__p, llx, lly, urx, ury, filename, description, author, mimetype, icon)
-
     @wrap_optlist
     def begin_document(self, filename, optlist=''):
         return PDF_begin_document(self.__p, filename, optlist)
@@ -164,17 +135,6 @@ class PDFlib:
     @wrap_optlist
     def begin_dpart(self, optlist=''):
         PDF_begin_dpart(self.__p, optlist)
-
-    @wrap_optlist
-    def begin_font(self, fontname, a, b, c, d, e, f, optlist=''):
-        PDF_begin_font(self.__p, fontname, a, b, c, d, e, f, optlist)
-
-    def begin_glyph(self, glyphname, wx, llx, lly, urx, ury):
-        PDF_begin_glyph(self.__p, glyphname, wx, llx, lly, urx, ury)
-
-    @wrap_optlist
-    def begin_glyph_ext(self, uv, optlist=''):
-        PDF_begin_glyph_ext(self.__p, uv, optlist)
 
     @wrap_optlist
     def begin_item(self, tagname, optlist=''):
@@ -187,22 +147,13 @@ class PDFlib:
     def begin_mc(self, tagname, optlist=''):
         PDF_begin_mc(self.__p, tagname, optlist)
 
-    def begin_page(self, width, height):
-        PDF_begin_page(self.__p, width, height)
-
     @wrap_optlist
     def begin_page_ext(self, width, height, optlist=''):
         PDF_begin_page_ext(self.__p, width, height, optlist)
 
-    def begin_pattern(self, width, height, xstep, ystep, painttype):
-        return PDF_begin_pattern(self.__p, width, height, xstep, ystep, painttype)
-
     @wrap_optlist
     def begin_pattern_ext(self, width, height, optlist=''):
         return PDF_begin_pattern_ext(self.__p, width, height, optlist)
-
-    def begin_template(self, width, height):
-        return PDF_begin_template(self.__p, width, height)
 
     @wrap_optlist
     def begin_template_ext(self, width, height, optlist=''):
@@ -229,9 +180,6 @@ class PDFlib:
     def close_image(self, image):
         PDF_close_image(self.__p, image)
 
-    def close_pdi(self, doc):
-        PDF_close_pdi(self.__p, doc)
-
     def close_pdi_document(self, doc):
         PDF_close_pdi_document(self.__p, doc)
 
@@ -254,12 +202,8 @@ class PDFlib:
         PDF_continue_text(self.__p, text)
 
     @wrap_optlist
-    def convert_to_unicode(self, inputformat, inputstring, optlist=''):
-        return PDF_convert_to_unicode(self.__p, inputformat, inputstring, optlist)
 
     @wrap_optlist
-    def create_3dview(self, username, optlist=''):
-        return PDF_create_3dview(self.__p, username, optlist)
 
     @wrap_optlist
     def create_action(self, type, optlist=''):
@@ -268,10 +212,6 @@ class PDFlib:
     @wrap_optlist
     def create_annotation(self, llx, lly, urx, ury, type, optlist=''):
         PDF_create_annotation(self.__p, llx, lly, urx, ury, type, optlist)
-
-    @wrap_optlist
-    def create_devicen(self, optlist=''):
-        return PDF_create_devicen(self.__p, optlist)
 
     @wrap_optlist
     def create_bookmark(self, text, optlist=''):
@@ -327,9 +267,6 @@ class PDFlib:
     def elliptical_arc(self, x, y, rx, ry, optlist=''):
         PDF_elliptical_arc(self.__p, x, y, rx, ry, optlist)
 
-    def encoding_set_char(self, encoding, slot, glyphname, uv):
-        PDF_encoding_set_char(self.__p, encoding, slot, glyphname, uv)
-
     @wrap_optlist
     def end_document(self, optlist=''):
         PDF_end_document(self.__p, optlist)
@@ -337,12 +274,6 @@ class PDFlib:
     @wrap_optlist
     def end_dpart(self, optlist=''):
         PDF_end_dpart(self.__p, optlist)
-
-    def end_font(self):
-        PDF_end_font(self.__p)
-
-    def end_glyph(self):
-        PDF_end_glyph(self.__p)
 
     def end_item(self, id):
         PDF_end_item(self.__p, id)
@@ -353,18 +284,12 @@ class PDFlib:
     def end_mc(self):
         PDF_end_mc(self.__p)
 
-    def end_page(self):
-        PDF_end_page(self.__p)
-
     @wrap_optlist
     def end_page_ext(self, optlist=''):
         PDF_end_page_ext(self.__p, optlist)
 
     def end_pattern(self):
         PDF_end_pattern(self.__p)
-
-    def end_template(self):
-        PDF_end_template(self.__p)
 
     def end_template_ext(self, width, height):
         PDF_end_template_ext(self.__p, width, height)
@@ -375,27 +300,8 @@ class PDFlib:
     def fill(self):
         PDF_fill(self.__p)
 
-    @wrap_optlist
-    def fill_graphicsblock(self, page, blockname, graphics, optlist=''):
-        return PDF_fill_graphicsblock(self.__p, page, blockname, graphics, optlist)
-
-    @wrap_optlist
-    def fill_imageblock(self, page, blockname, image, optlist=''):
-        return PDF_fill_imageblock(self.__p, page, blockname, image, optlist)
-
-    @wrap_optlist
-    def fill_pdfblock(self, page, blockname, contents, optlist=''):
-        return PDF_fill_pdfblock(self.__p, page, blockname, contents, optlist)
-
     def fill_stroke(self):
         PDF_fill_stroke(self.__p)
-
-    @wrap_optlist
-    def fill_textblock(self, page, blockname, text, optlist=''):
-        return PDF_fill_textblock(self.__p, page, blockname, text, optlist)
-
-    def findfont(self, fontname, encoding, embed):
-        return PDF_findfont(self.__p, fontname, encoding, embed)
 
     @wrap_optlist
     def fit_graphics(self, graphics, x, y, optlist=''):
@@ -438,21 +344,9 @@ class PDFlib:
     def get_option(self, keyword, optlist=''):
         return PDF_get_option(self.__p, keyword, optlist)
 
-    def get_parameter(self, key, modifier):
-        return PDF_get_parameter(self.__p, key, modifier)
-
-    def get_pdi_parameter(self, key, doc, page, reserved):
-        return PDF_get_pdi_parameter(self.__p, key, doc, page, reserved)
-
-    def get_pdi_value(self, key, doc, page, reserved):
-        return PDF_get_pdi_value(self.__p, key, doc, page, reserved)
-
     @wrap_optlist
     def get_string(self, idx, optlist=''):
         return PDF_get_string(self.__p, idx, optlist)
-
-    def get_value(self, key, modifier):
-        return PDF_get_value(self.__p, key, modifier)
 
     @wrap_optlist
     def info_font(self, font, keyword, optlist=''):
@@ -489,9 +383,6 @@ class PDFlib:
     @wrap_optlist
     def info_textline(self, text, keyword, optlist=''):
         return PDF_info_textline(self.__p, text, keyword, optlist)
-
-    def initgraphics(self):
-        PDF_initgraphics(self.__p)
 
     def lineto(self, x, y):
         PDF_lineto(self.__p, x, y)
@@ -533,10 +424,6 @@ class PDFlib:
         return PDF_load_graphics(self.__p, type, filename, optlist)
 
     @wrap_optlist
-    def load_iccprofile(self, profilename, optlist=''):
-        return PDF_load_iccprofile(self.__p, profilename, optlist)
-
-    @wrap_optlist
     def load_image(self, imagetype, filename, optlist=''):
         return PDF_load_image(self.__p, imagetype, filename, optlist)
 
@@ -549,61 +436,6 @@ class PDFlib:
 
     def moveto(self, x, y):
         PDF_moveto(self.__p, x, y)
-
-    def open_CCITT(self, filename, width, height, BitReverse, K, BlackIs1):
-        return PDF_open_CCITT(self.__p, filename, width, height, BitReverse, K, BlackIs1)
-
-    def open_file(self, filename):
-        return PDF_open_file(self.__p, filename)
-
-    def open_image(self, imagetype, source, data, width, height, components, bpc, parameters):
-        return PDF_open_image(self.__p, imagetype, source, data, width, height, components, bpc, parameters)
-
-    def open_image_file(self, imagetype, filename, stringparam, intparam):
-        return PDF_open_image_file(self.__p, imagetype, filename, stringparam, intparam)
-
-    def open_pdi(self, filename, filename_len):
-        return PDF_open_pdi(self.__p, filename, filename_len)
-
-    @wrap_optlist
-    def open_pdi_document(self, filename, optlist=''):
-        return PDF_open_pdi_document(self.__p, filename, optlist)
-
-    @wrap_optlist
-    def open_pdi_page(self, doc, pagenumber, optlist=''):
-        return PDF_open_pdi_page(self.__p, doc, pagenumber, optlist)
-
-    def pcos_get_number(self, doc, path):
-        return PDF_pcos_get_number(self.__p, doc, path)
-
-    def pcos_get_string(self, doc, path):
-        return PDF_pcos_get_string(self.__p, doc, path)
-
-    @wrap_optlist
-    def pcos_get_stream(self, doc, optlist='', path=''):
-        return PDF_pcos_get_stream(self.__p, doc, optlist, path)
-
-    def place_image(self, image, x, y, scale):
-        PDF_place_image(self.__p, image, x, y, scale)
-
-    def place_pdi_page(self, page, x, y, sx, sy):
-        PDF_place_pdi_page(self.__p, page, x, y, sx, sy)
-
-    @wrap_optlist
-    def poca_delete(self, container, optlist=''):
-        PDF_poca_delete(self.__p, container, optlist)
-
-    @wrap_optlist
-    def poca_insert(self, container, optlist=''):
-        PDF_poca_insert(self.__p, container, optlist)
-
-    @wrap_optlist
-    def poca_new(self, optlist=''):
-        return PDF_poca_new(self.__p, optlist)
-
-    @wrap_optlist
-    def poca_remove(self, container, optlist=''):
-        PDF_poca_remove(self.__p, container, optlist)
 
     @wrap_optlist
     def process_pdi(self, doc, page, optlist=''):
@@ -628,15 +460,6 @@ class PDFlib:
     def scale(self, sx, sy):
         PDF_scale(self.__p, sx, sy)
 
-    def set_border_color(self, red, green, blue):
-        PDF_set_border_color(self.__p, red, green, blue)
-
-    def set_border_dash(self, b, w):
-        PDF_set_border_dash(self.__p, b, w)
-
-    def set_border_style(self, style, width):
-        PDF_set_border_style(self.__p, style, width)
-
     @wrap_optlist
     def set_graphics_option(self, optlist=''):
         PDF_set_graphics_option(self.__p, optlist)
@@ -655,9 +478,6 @@ class PDFlib:
     def set_option(self, optlist=''):
         PDF_set_option(self.__p, optlist)
 
-    def set_parameter(self, key, value):
-        PDF_set_parameter(self.__p, key, value)
-
     @wrap_optlist
     def set_text_option(self, optlist=''):
         PDF_set_text_option(self.__p, optlist)
@@ -665,60 +485,17 @@ class PDFlib:
     def set_text_pos(self, x, y):
         PDF_set_text_pos(self.__p, x, y)
 
-    def set_value(self, key, value):
-        PDF_set_value(self.__p, key, value)
-
     def setcolor(self, fstype, colorspace, c1, c2, c3, c4):
         PDF_setcolor(self.__p, fstype, colorspace, c1, c2, c3, c4)
 
-    def setdash(self, b, w):
-        PDF_setdash(self.__p, b, w)
-
-    @wrap_optlist
-    def setdashpattern(self, optlist=''):
-        PDF_setdashpattern(self.__p, optlist)
-
-    def setflat(self, flatness):
-        PDF_setflat(self.__p, flatness)
-
     def setfont(self, font, fontsize):
         PDF_setfont(self.__p, font, fontsize)
-
-    def setgray(self, gray):
-        PDF_setgray(self.__p, gray)
-
-    def setgray_fill(self, gray):
-        PDF_setgray_fill(self.__p, gray)
-
-    def setgray_stroke(self, gray):
-        PDF_setgray_stroke(self.__p, gray)
-
-    def setlinecap(self, linecap):
-        PDF_setlinecap(self.__p, linecap)
-
-    def setlinejoin(self, linejoin):
-        PDF_setlinejoin(self.__p, linejoin)
 
     def setlinewidth(self, width):
         PDF_setlinewidth(self.__p, width)
 
     def setmatrix(self, a, b, c, d, e, f):
         PDF_setmatrix(self.__p, a, b, c, d, e, f)
-
-    def setmiterlimit(self, miter):
-        PDF_setmiterlimit(self.__p, miter)
-
-    def setpolydash(self, dasharray, length):
-        PDF_setpolydash(self.__p, dasharray, length)
-
-    def setrgbcolor(self, red, green, blue):
-        PDF_setrgbcolor(self.__p, red, green, blue)
-
-    def setrgbcolor_fill(self, red, green, blue):
-        PDF_setrgbcolor_fill(self.__p, red, green, blue)
-
-    def setrgbcolor_stroke(self, red, green, blue):
-        PDF_setrgbcolor_stroke(self.__p, red, green, blue)
 
     @wrap_optlist
     def shading(self, type, x0, y0, x1, y1, c1, c2, c3, c4, optlist=''):
@@ -733,9 +510,6 @@ class PDFlib:
 
     def show(self, text):
         PDF_show(self.__p, text)
-
-    def show_boxed(self, text, left, top, width, height, hmode, feature):
-        return PDF_show_boxed(self.__p, text, left, top, width, height, hmode, feature)
 
     def show_xy(self, text, x, y):
         PDF_show_xy(self.__p, text, x, y)
